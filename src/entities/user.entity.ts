@@ -1,5 +1,13 @@
-import { Column, Entity, JoinColumn, OneToOne, PrimaryColumn } from 'typeorm';
+import {
+	Column,
+	Entity,
+	JoinColumn,
+	OneToMany,
+	OneToOne,
+	PrimaryColumn,
+} from 'typeorm';
 import { v4 } from 'uuid';
+import { Buy } from './buy.entity';
 import { Cart } from './cart.entity';
 
 @Entity()
@@ -16,10 +24,12 @@ export class User {
 	@Column()
 	password: string;
 
+	@OneToMany((type) => Buy, (buy) => buy.user, { eager: true })
+	buys: Buy[];
+
 	@OneToOne((type) => Cart, {
 		eager: true,
 	})
-	
 	@JoinColumn()
 	cart: Cart;
 
