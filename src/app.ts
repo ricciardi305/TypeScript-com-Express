@@ -21,6 +21,8 @@ app.use((err: Error, req: Request, res: Response, _: NextFunction) => {
 		.json({ status: 'error', message: 'Internal server error' });
 });
 
-app.listen(3000, () => {
-	console.log('Server running');
-});
+// app.listen(3000, () => {
+// 	console.log('Server running');
+// });
+
+export default app;

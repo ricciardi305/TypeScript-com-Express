@@ -35,7 +35,6 @@ export const validateUserCreate = async (
 	// 		next(error);
 	// 	}
 	const data = req.body;
-	console.log('Passou middleware');
 
 	try {
 		const validatedData = await userCreateSchema.validate(data, {
@@ -45,7 +44,6 @@ export const validateUserCreate = async (
 
 		req.newUser = validatedData;
 
-		console.log('Passou middleware');
 		next();
 	} catch (error: any) {
 		return res.status(400).json({
